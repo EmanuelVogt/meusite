@@ -25,9 +25,9 @@
 
 Personal portfolio website with a **retro pixel-art / arcade game aesthetic**. The entire UI is designed around the concept of a character select screen — stats bars, stage selectors, CRT scanlines, and pixel fonts — while keeping the content professional and focused on real-world engineering projects.
 
-### Screenshots
+### Preview
 
-> _Replace with actual screenshots after deployment._
+![Portfolio Preview](/public/print.png)
 
 ## Features
 
