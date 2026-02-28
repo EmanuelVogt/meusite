@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, Wifi } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin } from "lucide-react";
 import type { Profile } from "@/src/entities/profile";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +31,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
   const { t } = useLocale();
 
   return (
-    <section className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden px-4 pt-10 pb-20 sm:px-6 lg:px-8">
       <Scanlines />
 
       {/* Background grid pattern */}
@@ -46,19 +46,6 @@ export function HeroSection({ profile }: HeroSectionProps) {
       />
 
       <div className="relative z-20 mx-auto max-w-6xl">
-        {/* Terminal-style header */}
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          animate="visible"
-          className="mb-12"
-        >
-          <span className="font-pixel text-[10px] uppercase tracking-widest text-text-muted">
-            {t.terminal}
-          </span>
-          <div className="mt-1 h-[2px] w-32 bg-primary opacity-50" />
-        </motion.div>
-
         {/* Main two-column layout */}
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Side A: Player Info */}
@@ -68,13 +55,8 @@ export function HeroSection({ profile }: HeroSectionProps) {
             animate="visible"
             className="order-2 lg:order-1"
           >
-            {/* Status indicator */}
+            {/* Location */}
             <div className="mb-6 flex items-center gap-2">
-              <Wifi size={12} className="text-accent-green" />
-              <span className="font-pixel text-[10px] uppercase tracking-widest text-accent-green">
-                {profile.status}
-              </span>
-              <span className="text-text-muted">|</span>
               <MapPin size={12} className="text-text-muted" />
               <span className="font-mono text-xs text-text-muted">
                 {t.location}
