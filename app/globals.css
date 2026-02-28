@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Dynamic theme tokens — change with .dark class on <html> */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --theme-bg: #F5F5F0;
+  --theme-bg-surface: #E8E8E0;
+  --theme-bg-card: #FFFFFF;
+  --theme-text: #1A1A2E;
+  --theme-text-muted: #6B7280;
+  --theme-border: #C8C8D0;
+  --theme-scanline: 0, 0, 0;
+}
+
+.dark {
+  --theme-bg: #0A0A0A;
+  --theme-bg-surface: #141420;
+  --theme-bg-card: #1A1A2E;
+  --theme-text: #EDEDED;
+  --theme-text-muted: #9CA3AF;
+  --theme-border: #2D2D44;
+  --theme-scanline: 255, 255, 255;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Static brand colors */
+  --color-primary: #552CB7;
+  --color-primary-light: #7C3AED;
+  --color-primary-glow: rgba(85, 44, 183, 0.4);
+  --color-accent-green: #10B981;
+
+  /* Dynamic colors — resolve via CSS custom properties */
+  --color-bg: var(--theme-bg);
+  --color-bg-surface: var(--theme-bg-surface);
+  --color-bg-card: var(--theme-bg-card);
+  --color-text: var(--theme-text);
+  --color-text-muted: var(--theme-text-muted);
+  --color-border: var(--theme-border);
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "JetBrains Mono", monospace;
+  --font-pixel: var(--font-press-start), "Press Start 2P", monospace;
+
+  /* Shadows */
+  --shadow-retro: 4px 4px 0px #552CB7;
+  --shadow-retro-lg: 8px 8px 0px #552CB7;
+  --shadow-retro-hover: 8px 8px 0px #7C3AED;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--theme-bg);
+  background-image: url('/pixel-grid.svg');
+  background-repeat: repeat;
+  color: var(--theme-text);
+  font-family: var(--font-sans);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(85, 44, 183, 0.4);
+  color: var(--theme-text);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #552CB7;
+  border: 1px solid var(--theme-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7C3AED;
 }
